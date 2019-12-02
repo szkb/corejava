@@ -1,6 +1,7 @@
 package com.study.concurrence.concurrencytoolkit.ountdownlatch;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
 /**
@@ -11,7 +12,7 @@ public class CountDownLatchStudy {
 
     @Test
     public void test() {
-        final CountDownLatch latch = new CountDownLatch(2);
+        final CountDownLatch latch = new CountDownLatch(3);
 
         new Thread() {
             public void run() {
@@ -45,7 +46,7 @@ public class CountDownLatchStudy {
 
         try {
             System.out.println("等待2个子线程执行完毕...");
-            latch.await();
+            latch.await(30, TimeUnit.SECONDS);
             System.out.println("2个子线程已经执行完毕");
             System.out.println("继续执行主线程");
         } catch (InterruptedException e) {
