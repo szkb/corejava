@@ -1,7 +1,5 @@
 package com.study.basicknowledge.finalstudy;
 
-import org.testng.annotations.Test;
-
 public class FinalTest {
 
     public static void main(String[] args) {

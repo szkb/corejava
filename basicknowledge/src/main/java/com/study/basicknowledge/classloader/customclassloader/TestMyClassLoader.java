@@ -1,7 +1,5 @@
 package com.study.basicknowledge.classloader.customclassloader;
 
-import org.testng.annotations.Test;
-
 public class TestMyClassLoader {
 
     public static void main(String[] args) throws Exception {
