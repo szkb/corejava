@@ -23,6 +23,9 @@
         <jedis.version>2.9.0</jedis.version>
         <fastJson.version>1.2.61</fastJson.version>
         <springBoot.version>2.2.1.RELEASE</springBoot.version>
+        <rxjava.version>2.1.16</rxjava.version>
+        <lombok.version>1.16.20</lombok.version>
+        <guava.version>20.0</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +42,24 @@
                 <version>${springBoot.version}</version>
             </dependency>
 
+            <!--rxjava-->
+            <dependency>
+                <groupId>io.reactivex.rxjava2</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
