@@ -45,6 +45,7 @@ public class Test {
             .of(1, 2, 3)
             .map(val -> val + holder[0])
             .sum());
+        int i = 0;
 
 //        new Thread(runnable).start();
 
