@@ -3,6 +3,7 @@ package com.study.concurrence.asynchronousclass;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import org.junit.Test;
 
 /**
  * @author hangwu
@@ -29,5 +30,11 @@ public class CompletableFutureExample {
         });
         System.out.println(f.get());
         System.in.read();
+    }
+
+    @Test
+    public void thenApply() {
+        String result = CompletableFuture.supplyAsync(() -> "hello").thenApply(s -> s + " world").join();
+        System.out.println(result);
     }
 }

@@ -1,6 +1,7 @@
 package com.study.basicknowledge.function;
 
 import java.util.function.Supplier;
+import org.junit.Test;
 
 /**
  * @author hangwu
@@ -17,5 +18,17 @@ public class SupplierDemo {
         // () -> name.length() 无参数，返回一个结果（字符串长度）
         // 所以该lambda表达式可以实现Supplier接口
         System.out.println(supplierTest(() -> name.length() + ""));
+    }
+
+    @Test
+    public void test() {
+        Supplier<String> supplier = () -> "hello world";
+        System.out.println(supplier.get());
+    }
+
+    @Test
+    public void test2() {
+        Supplier<Student> supplier = Student::new;
+        System.out.println(supplier.get().getName());
     }
 }
