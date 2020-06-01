@@ -1,7 +1,10 @@
 package com.study.basicknowledge.time;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 /**
  * @author hangwu
@@ -17,7 +20,9 @@ public class TimeUnitTest {
 
     @Test
     public void test2() {
-
+        List<String> ans = new ArrayList<>();
+        ans.add("");
+        System.out.println(ans.size());
     }
 
 }

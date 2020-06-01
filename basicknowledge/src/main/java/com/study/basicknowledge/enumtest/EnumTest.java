@@ -30,4 +30,11 @@ public class EnumTest {
         System.out.println(title);
     }
 
+    @Test
+    public void test3() {
+        BookingChannelEnum bookingChannelEnum = BookingChannelEnum.ABACUS;
+        System.out.println(bookingChannelEnum);
+        System.out.println(bookingChannelEnum.getValue());
+    }
+
 }

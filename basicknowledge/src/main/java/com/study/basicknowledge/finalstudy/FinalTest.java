@@ -1,6 +1,12 @@
 package com.study.basicknowledge.finalstudy;
 
+import org.junit.Test;
+
 public class FinalTest {
+
+    private String baseSql = "hello";
+
+    private static final String SQL = "world";
 
     public static void main(String[] args) {
         String a = "hello2";
@@ -10,5 +16,18 @@ public class FinalTest {
         String e = d + 2;
         System.out.println((a == c));
         System.out.println((a == e));
+    }
+
+    @Test
+    public void test() {
+        baseSql += "world";
+        System.out.println(baseSql + "world");
+    }
+
+    @Test
+    public void test2() {
+        StringBuilder stringBuilder = new StringBuilder(SQL);
+        stringBuilder.append("world");
+        System.out.println(stringBuilder.toString());
     }
 }

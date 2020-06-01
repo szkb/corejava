@@ -79,4 +79,17 @@ public class AutomicTest {
         System.out.println(number);
     }
 
+    @Test
+    public void test5() {
+        AtomicInteger number = new AtomicInteger(3);
+        AtomicInteger temp = new AtomicInteger(3);;
+        changeNumber(number);
+        System.out.println(number);
+        System.out.println(temp);
+    }
+
+    private void changeNumber(AtomicInteger number) {
+        number.incrementAndGet();
+    }
+
 }
