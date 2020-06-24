@@ -1,11 +1,12 @@
 package com.study.basicknowledge.proxytest.jdkproxy;
 
-import com.study.basicknowledge.proxy.*;
 import com.study.basicknowledge.proxytest.Bird;
 import com.study.basicknowledge.proxytest.Flyable;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import org.junit.Before;
+import java.io.*;
+import java.lang.reflect.*;
+import java.util.Arrays;
+import org.junit.Test;
+import sun.misc.ProxyGenerator;
 
 /**
  * @author hangwu
@@ -13,13 +14,8 @@ import org.junit.Before;
  */
 public class BirdJDKProxy {
 
-    @Before
-    public void init(){
-        //该设置用于输出jdk动态代理产生的类
-		System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
-    }
-
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         // 设置变量可以保存动态代理类，默认名称以 $Proxy0 格式命名
         // System.getProperties().setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         // 1. 创建被代理的对象，UserService接口的实现类
@@ -39,14 +35,9 @@ public class BirdJDKProxy {
 		 */
         Flyable proxy = (Flyable) Proxy.newProxyInstance(classLoader, interfaces, logHandler);
 
-//        byte[] proxyClassFile = ProxyGenerator.generateProxyClass(
-//            "com.study.basicknowledge.proxy.ProxyTemp.class", new Class[]{UserService.class}, Modifier.FINAL);
-//        FileOutputStream out = new FileOutputStream(new File("basicknowledge/src/main/java/com/study"
-//            + "/basicknowledge/proxy/ProxyTemp/ProxyTemp.class"));
-//        out.write(proxyClassFile);
-//        out.flush();
-//        out.close();
-//        System.out.println(proxy);
+        // 写到文件里面
+//        writeInFile(proxy);
+
         // 调用代理的方法
         proxy.fly();
 
@@ -54,4 +45,18 @@ public class BirdJDKProxy {
         // ProxyUtils.generateClassFile(bird.getClass(), "UserServiceProxy");
     }
 
+    private void writeInFile(Flyable proxy) {
+        try {
+            byte[] proxyClassFile = ProxyGenerator.generateProxyClass(
+                "com.study.basicknowledge.proxytest.jdkproxy.ProxyTemp", new Class[]{Flyable.class}, Modifier.FINAL);
+            FileOutputStream out = new FileOutputStream(new File("D:/Users/testJavaProject/core/basicknowledge"
+                + "/src/main/java/com/study/basicknowledge/proxytest/jdkproxy/ProxyTemp.class"));
+            out.write(proxyClassFile);
+            out.flush();
+            out.close();
+            System.out.println(proxy);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

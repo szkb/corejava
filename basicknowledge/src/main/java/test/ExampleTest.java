@@ -1,7 +1,9 @@
 package test;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -11,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.cglib.core.AbstractClassGenerator;
 import org.springframework.cglib.core.internal.Function;
+import org.springframework.util.CollectionUtils;
 
 /**
  * @author hangwu
@@ -144,6 +147,13 @@ public class ExampleTest {
         map.put("hello", new AtomicInteger(1));
         map.computeIfAbsent("world", key -> new AtomicInteger()).decrementAndGet();
         System.out.println(map);
+
+        // 这个返回的是一个Map
+        Map<String, AtomicInteger> ans =
+            map.entrySet().stream().collect(Collectors.toConcurrentMap(Entry::getKey,
+                item -> new AtomicInteger(item.getValue().decrementAndGet())));
+
+        System.out.println((ConcurrentHashMap<String, AtomicInteger>) ans );
     }
 
     @Test
@@ -180,5 +190,39 @@ public class ExampleTest {
         if (student.getClass() instanceof Class) {
             System.out.println("yes");
         }
+    }
+
+    @Test
+    public void test10() {
+
+        List<String> temp = new ArrayList<>();
+        if (CollectionUtils.isEmpty(temp)) {
+            System.out.println("hello");
+        }
+
+        double a = 0.00000;
+        double b = 0.5000000000000;
+
+        System.out.println(Double.compare(a, b));
+
+        List<String> sum = Arrays.asList("2", "2", "3", "4", "5", "1");
+
+        List<String> part = Arrays.asList("1", "2", "3", "4");
+
+        List<String> ans =
+        sum.stream().filter(item -> part.stream().anyMatch(p -> p.equalsIgnoreCase(item))).distinct()
+            .collect(Collectors.toList());
+
+        System.out.println(ans);
+    }
+
+    @Test
+    public void test11() throws InterruptedException {
+        for (int i = 0; i< 10; i++) {
+            new Thread(() -> {
+                System.out.println("hello world");
+            }).start();
+        }
+        Thread.sleep(2000);
     }
 }
