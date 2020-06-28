@@ -11,45 +11,38 @@ import org.junit.Test;
  * @author hangwu
  * @date 2020/6/22 15:58
  */
-public class ZookeeperTest {
+public class ZookeeperLock {
 
-    void test() {
-        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-        CuratorFramework client = CuratorFrameworkFactory
-            .newClient("localhost:2181", retryPolicy);
+    public boolean getZookeeperLock(CuratorFramework client) {
 
-        client.start();
-
-//创建分布式锁, 锁空间的根节点路径为/curator/lock
-
+        //创建分布式锁, 锁空间的根节点路径为/curator/lock
         InterProcessMutex mutex = new InterProcessMutex(client, "/curator/lock");
-
         try {
             mutex.acquire();
-
-//获得了锁, 进行业务流程
-
-            System.out.println("Enter mutex");
-
-//完成业务流程, 释放锁
-
+            //获得了锁, 进行业务流程
+            System.out.println(Thread.currentThread().getName() + ": Enter mutex");
+            //完成业务流程, 释放锁
             mutex.release();
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
-
-//关闭客户端
-
+        //关闭客户端
         client.close();
+        return true;
     }
 
     @Test
     public void testDistributedLock() {
+        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
+        // 这里应该先启动zookeeper
+        CuratorFramework client = CuratorFrameworkFactory.newClient("localhost:2181", retryPolicy);
+        client.start();
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 try {
-                    test();
-                    System.out.println("hello");
+                    if (getZookeeperLock(client)) {
+                        System.out.println(Thread.currentThread().getName() + ": hello");
+                    }
                 } catch (Exception e) {
                     System.out.println("getLock fail");
                     e.printStackTrace();
@@ -58,7 +51,7 @@ public class ZookeeperTest {
         }
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

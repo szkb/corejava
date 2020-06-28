@@ -1,7 +1,6 @@
 package com.study.service.distributedlock.redis;
 
 import java.util.concurrent.TimeUnit;
-import org.junit.Test;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
 
