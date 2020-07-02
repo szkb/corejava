@@ -26,6 +26,7 @@
         <rxjava.version>2.1.16</rxjava.version>
         <lombok.version>1.16.20</lombok.version>
         <guava.version>20.0</guava.version>
+        <reactor-core.version>3.0.5.RELEASE</reactor-core.version>
     </properties>
 
     <dependencyManagement>
@@ -92,6 +93,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastJson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-core</artifactId>
+                <version>${reactor-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
