@@ -1,6 +1,7 @@
 package com.study.springboot;
 
 import com.study.springboot.annotationdemo.Home;
+import com.study.springboot.circular.CircularA;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,10 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpringbootApplicationTests {
 
     @Autowired
-    private Home home;
+    private Home circularA;
 
     @Test
     void test() {
-        home.print();
+        circularA.print();
+        System.out.println(circularA);
     }
 }
