@@ -1,17 +1,18 @@
 package com.study.basicknowledge;
 
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.IntStream;
+import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
 /**
  * @author hangwu
  * @date 2019/12/23 14:18
  */
-public class Test {
+public class VolatileTest {
 
     private static volatile boolean test1 = false;
 
@@ -38,7 +39,7 @@ public class Test {
     }
 
 
-    @org.junit.Test
+    @Test
     public void workaroundSingleThread() {
         int[] holder = new int[]{2};
         Runnable runnable = () -> System.out.println(IntStream
@@ -75,6 +76,7 @@ class Student {
 
     private String name;
     private int age;
+    private List<String> routeSearchToken = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -100,6 +102,14 @@ class Student {
 
     public void setUniversity(University university) {
         this.university = university;
+    }
+
+    public List<String> getRouteSearchToken() {
+        return routeSearchToken;
+    }
+
+    public void setRouteSearchToken(List<String> routeSearchToken) {
+        this.routeSearchToken = routeSearchToken;
     }
 }
 
