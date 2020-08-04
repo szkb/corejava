@@ -16,7 +16,6 @@ public class MultiThread implements Runnable {
 
     }
 
-
     @Test
     public void test() throws InterruptedException {
         for (int i = 0; i < 1; i++) {
