@@ -17,7 +17,7 @@ public class Producer {
         //初始化 Producer，整个应用生命周期内只需要初始化一次
         producer.start();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             //创建一条消息对象，指定其主题、标签和消息内容
             Message msg = new Message(
                     "topic_example_java" /* 消息主题名 */,

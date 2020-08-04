@@ -25,6 +25,7 @@ public class Consumer {
 
         //注册消息监听器
         consumer.registerMessageListener(new MessageListenerConcurrently() {
+            @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext context) {
                 //默认 list 里只有一条消息，可以通过设置参数来批量接收消息
                 if (list != null) {
