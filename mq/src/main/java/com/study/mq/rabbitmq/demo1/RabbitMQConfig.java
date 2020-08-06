@@ -1,7 +1,6 @@
 package com.study.mq.rabbitmq.demo1;
 
 
-import java.math.BigInteger;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

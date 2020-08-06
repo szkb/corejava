@@ -12,9 +12,17 @@
 
     <modules>
         <module>basicknowledge</module>
+        <module>collection</module>
         <module>concurrence</module>
+        <module>database</module>
+        <module>datastructure</module>
+        <module>designmode</module>
+        <module>dubbo</module>
+        <module>mq</module>
+        <module>rabbitmq</module>
         <module>redis</module>
         <module>mq</module>
+        <module>springboot</module>
     </modules>
 
     <properties>
@@ -29,14 +37,16 @@
         <reactor-core.version>3.0.5.RELEASE</reactor-core.version>
         <spring-boot-test.version>2.3.1.RELEASE</spring-boot-test.version>
         <spring-test.version>5.2.7.RELEASE</spring-test.version>
+        <spring-boot-dependencies.version>2.2.5.RELEASE</spring-boot-dependencies.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springBoot.version}</version>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>
