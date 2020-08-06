@@ -1,4 +1,4 @@
-package com.study.service.distributedlock.redis;
+package com.study.redis.distributedlock.redis;
 
 import org.redisson.Redisson;
 import org.redisson.api.RLock;

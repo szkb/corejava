@@ -1,4 +1,4 @@
-package com.study.service.distributedlock;
+package com.study.redis.distributedlock;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;

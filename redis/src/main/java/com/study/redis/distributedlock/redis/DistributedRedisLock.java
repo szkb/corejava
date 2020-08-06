@@ -1,4 +1,4 @@
-package com.study.service.distributedlock.redis;
+package com.study.redis.distributedlock.redis;
 
 import java.util.concurrent.TimeUnit;
 import org.redisson.Redisson;

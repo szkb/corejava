@@ -1,10 +1,8 @@
 package com.study.springboot.annotationdemo;
 
-import javax.annotation.Priority;
 import org.junit.Test;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * @author hangwu

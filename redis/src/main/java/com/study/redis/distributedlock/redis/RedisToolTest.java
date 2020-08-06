@@ -1,4 +1,5 @@
-package com.study.service.distributedlock.redis;
+package com.study.redis.distributedlock.redis;
+
 
 import org.junit.Test;
 

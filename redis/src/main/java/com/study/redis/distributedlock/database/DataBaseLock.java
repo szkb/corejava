@@ -1,4 +1,4 @@
-package com.study.service.distributedlock.database;
+package com.study.redis.distributedlock.database;
 
 import java.sql.*;
 import org.springframework.util.StringUtils;

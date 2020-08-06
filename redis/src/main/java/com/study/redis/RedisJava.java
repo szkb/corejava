@@ -1,4 +1,4 @@
-package com.study.service;
+package com.study.redis;
 
 import redis.clients.jedis.Jedis;
  
