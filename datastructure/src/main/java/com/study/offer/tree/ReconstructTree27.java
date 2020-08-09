@@ -1,4 +1,4 @@
-package com.study.offer.array.tree;
+package com.study.offer.tree;
 
 import org.junit.Test;
 

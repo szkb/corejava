@@ -19,8 +19,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.2.1.RELEASE</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.lmax</groupId>
@@ -34,7 +32,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

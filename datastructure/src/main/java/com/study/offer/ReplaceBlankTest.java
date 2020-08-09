@@ -1,4 +1,4 @@
-package com.study.offer.array;
+package com.study.offer;
 
 import org.junit.Test;
 import org.springframework.util.StringUtils;

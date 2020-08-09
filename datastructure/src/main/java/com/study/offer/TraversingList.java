@@ -1,4 +1,4 @@
-package com.study.offer.array;
+package com.study.offer;
 
 import java.util.Stack;
 
