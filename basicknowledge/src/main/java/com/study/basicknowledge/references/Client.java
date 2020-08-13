@@ -1,7 +1,5 @@
 package com.study.basicknowledge.references;
 
-import java.lang.ref.WeakReference;
-
 /**
  * Main class
  *
