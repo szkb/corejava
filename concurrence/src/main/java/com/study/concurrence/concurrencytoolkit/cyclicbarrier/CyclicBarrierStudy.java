@@ -12,11 +12,12 @@ import org.junit.Test;
 public class CyclicBarrierStudy {
 
     @Test
-    public void test() {
+    public void test() throws InterruptedException {
         ExecutorService service = Executors.newCachedThreadPool();
         final CyclicBarrier cb = new CyclicBarrier(3);//创建CyclicBarrier对象并设置3个公共屏障点
         for (int i = 0; i < 3; i++) {
             Runnable runnable = new Runnable() {
+                @Override
                 public void run() {
                     try {
                         Thread.sleep((long) (Math.random() * 10000));
@@ -39,6 +40,8 @@ public class CyclicBarrierStudy {
             };
             service.execute(runnable);
         }
+
+        Thread.sleep(30000);
         service.shutdown();
     }
 }

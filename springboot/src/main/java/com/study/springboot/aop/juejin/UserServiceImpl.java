@@ -1,6 +1,7 @@
 package com.study.springboot.aop.juejin;
 
 import org.springframework.stereotype.Service;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -18,4 +19,10 @@ public class UserServiceImpl implements UserService {
     public void testAnnotationAop() {
         System.out.println("testAnnotationAop");
     }
+
+    @Override
+    public int getMathNumber() {
+        return 2;
+    }
+
 }

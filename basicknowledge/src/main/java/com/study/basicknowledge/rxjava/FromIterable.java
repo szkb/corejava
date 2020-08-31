@@ -4,6 +4,8 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -26,10 +28,13 @@ public class FromIterable {
             System.out.println(throwable);
             return item + 2;
         }).toObservable()).subscribe(System.out::println);
+
+        System.out.println("hhhhhh");
     }
 
-    private Single<Object> divide(Integer item) {
-        return Single.just(item / (item - 2));
+    private Single<Object> divide(Integer item) throws InterruptedException {
+        Thread.sleep(1000);
+        return Single.just(item * (item + 2));
 //        try {
 //            return Single.just(item / (item - 2));
 //        } catch (Exception e) {
@@ -37,14 +42,23 @@ public class FromIterable {
 //        }
     }
 
-    private Single<Integer> add(Integer item) {
-        return Single.just(item + 3);
+    private Integer add(Integer item) {
+        return item + 3;
     }
 
     @Test
     public void test1() {
         String ans = StringUtils.leftPad(String.valueOf(1), 2, "0");
         System.out.println(ans);
+    }
+
+    @Test
+    public void test2() throws ExecutionException, InterruptedException {
+        List<Integer> temp = Arrays.asList(1, 2, 3, 4);
+        CompletableFuture<Void> number = CompletableFuture
+            .runAsync(() -> temp.forEach(item -> System.out.println(add(item))));
+
+        System.out.println(number.get());
     }
 
 }

@@ -16,4 +16,11 @@ public class ConcurrentHashMapTest {
         map.put("world", 2);
         System.out.println(map.remove("hel"));
     }
+
+    @Test
+    public void test2() {
+        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+
+        map.computeIfAbsent("hello", (key) -> 1);
+    }
 }

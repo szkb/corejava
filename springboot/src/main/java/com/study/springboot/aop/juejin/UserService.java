@@ -5,4 +5,6 @@ public interface UserService {
     String save(String user);
 
     void testAnnotationAop();
+
+    int getMathNumber();
 }

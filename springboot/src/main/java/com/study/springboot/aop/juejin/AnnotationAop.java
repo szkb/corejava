@@ -1,13 +1,9 @@
 package com.study.springboot.aop.juejin;
 
-import com.study.springboot.aop.juejin.Log;
 import java.lang.reflect.Method;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +21,6 @@ public class AnnotationAop {
             System.out.println(log.value());
             System.out.println("around");
             return joinPoint.proceed();
-        } catch (Throwable throwable) {
-            throw throwable;
         } finally {
             System.out.println("around");
         }
@@ -38,6 +32,14 @@ public class AnnotationAop {
         Method method = signature.getMethod();
         Log log = method.getAnnotation(Log.class);
         System.out.println("注解式拦截 " + log.value());
+    }
+
+    @Around("execution(* UserServiceImpl.getMathNumber())")
+    public int getNumber(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("hello");
+        pjp.proceed();
+        System.out.println("world");
+        return 666;
     }
 }
 

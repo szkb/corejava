@@ -5,6 +5,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ExchangerTest {
+    /*
+    * Exchanger允许在并发任务之间交换数据。具体来说，则是允许两个线程之间定义同步点，当两个线程都到达同步点时，交换数据
+    * 结构。因此第一个线程的数据结构进入到第二个数据结构中，第二个线程的数据结构进入第一个线程中。
+    *
+    * */
 
     private static final Exchanger<String> exgr = new Exchanger<String>();
     private static ExecutorService threadPool = Executors.newFixedThreadPool(2);

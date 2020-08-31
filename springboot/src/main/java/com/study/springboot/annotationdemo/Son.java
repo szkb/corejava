@@ -15,7 +15,6 @@ public class Son implements Parent {
     private Hobby hobby;
 
     public Son(Hobby hobby) {
-        System.out.println("构造函数");
         this.hobby = hobby;
     }
 

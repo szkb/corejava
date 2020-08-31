@@ -16,6 +16,7 @@ public class ShaiZi60 {
             double[] tmp = new double[5 * i + 1];
             for (int j = 0; j < pre.length; j++) {
                 for (int x = 0; x < 6; x++) {
+                    // 这里的/6举3个骰子的例子即可
                     tmp[j + x] += pre[j] / 6;
                 }
             }

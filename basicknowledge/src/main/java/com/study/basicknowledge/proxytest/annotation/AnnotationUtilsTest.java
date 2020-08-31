@@ -1,6 +1,7 @@
 package com.study.basicknowledge.proxytest.annotation;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 @MyAnnotation(value = "aa", alias = "bb")
 public class AnnotationUtilsTest {

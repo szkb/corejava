@@ -51,6 +51,7 @@ public class CompletableFutureTest {
          * ForkJoinPool线程池的CompletableFuture对象.但是这个对象没有返回值
          */
         CompletableFuture future = CompletableFuture.runAsync(getRandomIntRunnable());
+        System.out.println(future);
         Assert.assertEquals(null, future.get());
     }
 
@@ -351,5 +352,11 @@ public class CompletableFutureTest {
         CompletableFuture future1 = CompletableFuture.completedFuture(future);
         CompletableFuture future2 = CompletableFuture.completedFuture(future1);
         System.out.println(future2.get());
+        System.out.println(future1.get());
+        System.out.println(future.get());
+
+        System.out.println(future);
+        System.out.println(future1);
+        System.out.println(future2);
     }
 }

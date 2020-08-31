@@ -32,7 +32,6 @@ class SpringbootApplicationTests {
 
     @Test
     public void testTransaction() {
-        personService.testTx();
         personService.testName();
     }
 }

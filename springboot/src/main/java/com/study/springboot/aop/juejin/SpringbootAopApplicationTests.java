@@ -29,4 +29,9 @@ public class SpringbootAopApplicationTests {
     public void testAop3() {
         userService.testAnnotationAop();
     }
+
+    @Test
+    public void testAop4() {
+        System.out.println(userService.getMathNumber());
+    }
 }
