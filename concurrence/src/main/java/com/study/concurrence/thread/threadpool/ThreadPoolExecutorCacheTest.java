@@ -3,7 +3,7 @@ package com.study.concurrence.thread.threadpool;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThreadPoolExecutorTest {
+public class ThreadPoolExecutorCacheTest {
     public static void main(String[] args) {
         //创建一个可缓存线程池
         ExecutorService cachedThreadPool = Executors.newCachedThreadPool();

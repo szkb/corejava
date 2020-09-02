@@ -1,5 +1,6 @@
 package com.study.designmode.singleton;
 
+import java.lang.reflect.Constructor;
 import org.junit.Test;
 
 /**
@@ -8,12 +9,18 @@ import org.junit.Test;
  */
 public class VolatileSingleton {
 
+    private VolatileSingleton() {
+
+    }
+
     private static volatile VolatileSingleton instance = null;
 
     public static VolatileSingleton getInstance() {
         if (instance == null) {
             synchronized (VolatileSingleton.class) {
-                instance = new VolatileSingleton();
+                if (instance == null) {
+                    instance = new VolatileSingleton();
+                }
             }
         }
         return instance;
@@ -32,6 +39,32 @@ public class VolatileSingleton {
         }
         new Thread(() -> write());
         Thread.sleep(5000);
+    }
+
+    @Test
+    public void test2() throws Exception {
+        Class<VolatileSingleton> clazz = VolatileSingleton.class;
+        Constructor constructor = clazz.getDeclaredConstructor();
+        constructor.setAccessible(true);
+
+        VolatileSingleton a = (VolatileSingleton) constructor.newInstance();
+        VolatileSingleton b = (VolatileSingleton) constructor.newInstance();
+
+        System.out.println(a);
+        System.out.println(b);
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        Class<VolatileSingleton> clazz = VolatileSingleton.class;
+        Constructor constructor = clazz.getDeclaredConstructor();
+        constructor.setAccessible(true);
+
+        VolatileSingleton a = (VolatileSingleton) constructor.newInstance();
+        VolatileSingleton b = (VolatileSingleton) constructor.newInstance();
+
+        System.out.println(a);
+        System.out.println(b);
     }
 
 }
