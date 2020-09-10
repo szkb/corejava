@@ -17,7 +17,7 @@ public class ComposeTest {
         });
         CompletableFuture<String> f =  future.thenCompose( i -> {
             return CompletableFuture.supplyAsync(() -> {
-                return (i * 10) + "";
+                return (i * 10) + "hello";
             });
         });
         System.out.println(f.get()); //1000

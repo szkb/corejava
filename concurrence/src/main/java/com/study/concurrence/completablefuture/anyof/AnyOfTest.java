@@ -30,8 +30,8 @@ public class AnyOfTest {
             }
             return "abc";
         });
-        CompletableFuture<Void> f =  CompletableFuture.allOf(future1,future2);
-//        CompletableFuture<Object> f = CompletableFuture.anyOf(future1, future2);
+//        CompletableFuture<Void> f =  CompletableFuture.allOf(future1,future2);
+        CompletableFuture<Object> f = CompletableFuture.anyOf(future1, future2);
         System.out.println(f.get());
     }
 

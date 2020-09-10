@@ -5,7 +5,7 @@ import org.springframework.util.StringUtils;
 
 public class DataBaseLock {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         //声明Connection对象
         // 给悲观锁使用，两个不同的连接，模拟两个不同的进程。
         Connection con;
@@ -48,13 +48,13 @@ public class DataBaseLock {
                             result = getPessimisticLock(con1);
                         }
                         if (result) {
-                            System.out.println("hello world");
+                            System.out.println(Thread.currentThread().getName() + ":" + "hello world");
                         } else {
-                            System.out.println("getOptimisticLock fail");
+                            System.out.println(Thread.currentThread().getName() + ":" + "getOptimisticLock fail");
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("catch getOptimisticLock fail");
+                        System.out.println(Thread.currentThread().getName() + ":" + "catch getOptimisticLock fail");
                     }
                 }).start();
             }
@@ -101,7 +101,7 @@ public class DataBaseLock {
             return null;
         }
         return String.format("update database_lock set resource = %s, version = %s where version = %s",
-            Integer.parseInt(version) + 1,  Integer.parseInt(version) + 1, version);
+            Integer.parseInt(version) + 1, Integer.parseInt(version) + 1, version);
     }
 
     private static boolean getPessimisticLock(Connection con) throws Exception {
@@ -121,12 +121,13 @@ public class DataBaseLock {
             }
             int result = statement.executeUpdate(sql);
             con.commit();
-            System.out.println(Thread.currentThread().getName() + ":" + result);
+            System.out.println(Thread.currentThread().getName() + "得到分布式锁" + ":" + result);
             return result != 0;
         } catch (Exception e) {
             return false;
         }
     }
+
     private static String getPessimisticSQL(String resource) {
         if (StringUtils.isEmpty(resource)) {
             return null;

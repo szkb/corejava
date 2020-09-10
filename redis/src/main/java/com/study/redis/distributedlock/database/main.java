@@ -26,7 +26,6 @@ public class main {
             Class.forName(driver);
             //1.getConnection()方法，连接MySQL数据库！！
             con = DriverManager.getConnection(url, user, password);
-            con.setAutoCommit(false);
 
             con1 = DriverManager.getConnection(url, user, password);
             con1.setAutoCommit(false);
@@ -144,7 +143,6 @@ public class main {
             return false;
         }
         int result = statement1.executeUpdate(sql);
-        con.commit();
         System.out.println(Thread.currentThread().getName() + ":" + result);
         return result != 0;
     }

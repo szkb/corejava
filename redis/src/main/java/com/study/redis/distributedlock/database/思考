@@ -1,0 +1,32 @@
+分布式锁是对资源的抢占
+
+第一：使用数据库做分布式锁
+https://blog.csdn.net/u013256816/article/details/92854794
+基于表记录
+1、可以用字段的唯一性进行插入约束  获取锁 执行返回boolean类型；
+2、删除该行记录 释放锁
+
+缺点：
+1、锁没有失效时间，一旦释放锁的操作失败会导致锁记录一直在数据库中，其它线程无法获取锁，
+这个缺陷可以用一个定时任务去定时清理；
+2、依赖于数据库，避免单点；
+
+乐观锁
+STEP1 - 获取资源： SELECT resource, version FROM optimistic_lock WHERE id = 1
+STEP2 - 执行业务逻辑
+STEP3 - 更新资源：UPDATE optimistic_lock SET resource = resource -1, version = version + 1 WHERE id = 1 AND version = oldVersion
+
+如果失败则回滚执行的业务逻辑
+
+
+悲观锁
+首先要关闭自动提交。
+STEP1 - 获取锁：SELECT * FROM database_lock WHERE id = 1 FOR UPDATE;。
+STEP2 - 执行业务逻辑。
+STEP3 - 释放锁：COMMIT。
+
+第二、基于Redis的分布式锁
+https://juejin.im/post/6844903830442737671
+
+第三、基于zookeeper的分布式锁
+https://juejin.im/post/6844903729406148622
