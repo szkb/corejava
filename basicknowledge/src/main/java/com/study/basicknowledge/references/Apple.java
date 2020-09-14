@@ -1,7 +1,5 @@
 package com.study.basicknowledge.references;
 
-import org.junit.Test;
-
 /**
  * Apple class
  *

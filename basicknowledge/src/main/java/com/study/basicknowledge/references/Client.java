@@ -22,6 +22,7 @@ public class Client {
         //如果为空，代表被回收了
         if (salad.get() == null) {
             System.out.println("clear Apple。");
+            System.out.println(salad);
         }
     }
 }

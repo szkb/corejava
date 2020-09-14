@@ -14,4 +14,9 @@ public class Salad extends WeakReference<Apple> {
     public Salad(Apple apple) {
         super(apple);
     }
+
+    @Override
+    public String toString() {
+        return "Salad{}";
+    }
 }

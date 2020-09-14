@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置Chinese实例，其实现类是Chinese -->
+    <bean id="chinese" class="com.study.springboot.ioc.set.Chinese">
+        <!-- 将StoneAxe注入给axe属性 -->
+        <property name="axe" ref="stoneAxe" />
+        <property name="name" value="孙悟空"/>
+    </bean>
+
+    <!-- 配置stoneAxe实例 -->
+    <bean id="stoneAxe" class="com.study.springboot.ioc.set.StoneAxe" />
+
+    <!-- 配置Japanese实例 -->
+    <bean id="japanese" class="com.study.springboot.ioc.constructor.Japanese">
+        <!-- 使用构造注入 ，为Japanese实例注入SteelAxe实例-->
+        <constructor-arg ref="stoneAxe"/>
+    </bean>
+</beans>
