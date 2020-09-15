@@ -32,7 +32,7 @@ public class Producer implements Runnable{
                     System.out.println("注水失败...");
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
