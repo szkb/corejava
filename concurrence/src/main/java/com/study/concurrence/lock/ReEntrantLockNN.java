@@ -10,7 +10,10 @@ import org.junit.Test;
 public class ReEntrantLockNN {
 
     @Test
-    public void test() {
+    public void test() throws InterruptedException {
         ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        lock.tryLock();
+        lock.lockInterruptibly();
     }
 }

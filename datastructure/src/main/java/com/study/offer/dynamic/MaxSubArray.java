@@ -1,6 +1,7 @@
 package com.study.offer.dynamic;
 
 import java.util.Arrays;
+import org.junit.Test;
 
 /**
  * @author hangwu
@@ -43,5 +44,11 @@ public class MaxSubArray {
             former = cur;
         }
         return max;
+    }
+
+    @Test
+    public void test() {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(maxSubArray2(nums));
     }
 }
