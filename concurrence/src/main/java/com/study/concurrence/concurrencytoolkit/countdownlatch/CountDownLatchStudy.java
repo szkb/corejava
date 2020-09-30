@@ -1,4 +1,4 @@
-package com.study.concurrence.concurrencytoolkit.ountdownlatch;
+package com.study.concurrence.concurrencytoolkit.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
