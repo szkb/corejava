@@ -1,5 +1,8 @@
 package com.study.offer.sort;
 
+import java.util.Arrays;
+import org.junit.Test;
+
 /**
  * @author hangwu
  */
@@ -56,6 +59,13 @@ public class QuickSort {
         int temp = n[i];
         n[i] = n[j];
         n[j] = temp;
+    }
+
+    @Test
+    public void test() {
+        int[] ans = {3, 7, 8, 9, 2, 1, 0, 74, 56};
+        quicksort(ans);
+        System.out.println(Arrays.toString(ans));
     }
 
 }
