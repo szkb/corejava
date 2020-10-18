@@ -32,4 +32,17 @@ public class BasicFunction {
 
         System.out.println(ans.get("1"));
     }
+
+    @Test
+    public void test2() {
+        Map<String, String> ans = new HashMap<>();
+        ans.put("1", "1");
+        ans.put("2", "2");
+
+        Map<String, String> ans2 = new HashMap<>();
+        ans2.put("1", "1");
+        ans2.put("2", "2");
+
+        System.out.println(ans.equals(ans2));
+    }
 }

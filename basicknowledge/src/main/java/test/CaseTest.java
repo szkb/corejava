@@ -1,6 +1,7 @@
 package test;
 
 import java.io.*;
+import java.util.StringTokenizer;
 import org.junit.Test;
 
 /**
@@ -32,5 +33,16 @@ public class CaseTest {
     @Test
     public void test() {
         String s = "hello";
+    }
+
+    @Test
+    public void test2() {
+        String configValue = "hello,world, actual";
+        String delimiter = ",";
+        StringTokenizer tokenizer = new StringTokenizer(configValue, delimiter);
+
+        while(tokenizer.hasMoreElements()) {
+            System.out.println(tokenizer.nextToken());
+        }
     }
 }

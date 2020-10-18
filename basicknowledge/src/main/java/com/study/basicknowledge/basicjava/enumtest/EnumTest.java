@@ -32,7 +32,7 @@ public class EnumTest {
 
     @Test
     public void test3() {
-        BookingChannelEnum bookingChannelEnum = BookingChannelEnum.ABACUS;
+        BookingChannelEnum bookingChannelEnum = BookingChannelEnum.valueOf("NO_NEED_PnR");
         System.out.println(bookingChannelEnum);
         System.out.println(bookingChannelEnum.getValue());
     }

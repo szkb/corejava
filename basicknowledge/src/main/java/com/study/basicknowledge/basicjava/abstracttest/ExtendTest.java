@@ -12,6 +12,7 @@ public class ExtendTest extends AbstractService{
         System.out.println("hello");
     }
 
+    @Override
     @Test
     public void test() {
         ExtendTest extendTest = new ExtendTest();
@@ -25,4 +26,14 @@ public class ExtendTest extends AbstractService{
         service.getAns();
     }
 
+    @Override
+    protected void generate() {
+        generate();
+        this.ans = "hello";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new ServiceA().ans);
+        System.out.println(new ServiceB().ans);
+    }
 }
