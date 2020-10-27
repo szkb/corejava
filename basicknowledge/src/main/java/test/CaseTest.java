@@ -1,8 +1,12 @@
 package test;
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 import org.junit.Test;
+import test.ExampleTest.Student;
 
 /**
  * @author hangwu
@@ -44,5 +48,53 @@ public class CaseTest {
         while(tokenizer.hasMoreElements()) {
             System.out.println(tokenizer.nextToken());
         }
+    }
+
+    @Test
+    public void test3() {
+        long time = System.currentTimeMillis();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        System.out.println(calendar);
+    }
+
+    @Test
+    public void test4() throws ParseException {
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        java.util.Date date = new Date(1604678400000L);
+        String str = sdf.format(date);
+        System.out.println(str);
+    }
+
+    @Test
+    public void test5() {
+        List<Student> studentList = new ArrayList<>();
+        Student student = new Student();
+        student.setName("hello");
+        studentList.add(student);
+
+        Student student2 = new Student();
+        studentList.add(student2);
+        System.out.println(studentList.stream().map(Student::getName).filter(Objects::nonNull).
+            collect(Collectors.toList()));
+    }
+
+    @Test
+    public void test6() {
+        List<String> ans = new ArrayList<>();
+        ans.add("1");
+        ans.add("1");
+
+        System.out.println(new HashSet<>(ans));
+    }
+
+    @Test
+    public void test7() {
+        List<String> ans = new ArrayList<>();
+        ans.add(null);
+        ans.add(null);
+
+        System.out.println(ans.size());
+        System.out.println(ans.isEmpty());
     }
 }
