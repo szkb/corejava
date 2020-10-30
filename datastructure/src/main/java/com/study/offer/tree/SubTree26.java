@@ -15,6 +15,7 @@ public class SubTree26 {
             return false;
         }
 
+        // 转化成前序遍历列表容器，如果是子结构的话应该某一段是相同的
         List<Integer> treeNodeAToArray = transfer(A, new ArrayList<>());
         List<Integer> treeNodeBToArray = transfer(B, new ArrayList<>());
 

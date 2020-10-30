@@ -7,7 +7,7 @@ import java.util.Queue;
  * @author hangwu
  * @date 2020/8/7 8:34
  */
-public class MirrorTree {
+public class MirrorTree27 {
 
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null) {

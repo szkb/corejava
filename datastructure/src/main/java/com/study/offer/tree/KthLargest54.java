@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author hangwu
  * @date 2020/8/19 8:49
  */
-public class KthLargest {
+public class KthLargest54 {
 
     int res, k;
 

@@ -4,7 +4,7 @@ package com.study.offer.tree;
  * @author hangwu
  * @date 2020/8/7 9:14
  */
-public class SymmetricTree {
+public class SymmetricTree28 {
 
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
