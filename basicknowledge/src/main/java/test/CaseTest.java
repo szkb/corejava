@@ -45,7 +45,7 @@ public class CaseTest {
         String delimiter = ",";
         StringTokenizer tokenizer = new StringTokenizer(configValue, delimiter);
 
-        while(tokenizer.hasMoreElements()) {
+        while (tokenizer.hasMoreElements()) {
             System.out.println(tokenizer.nextToken());
         }
     }
@@ -60,7 +60,7 @@ public class CaseTest {
 
     @Test
     public void test4() throws ParseException {
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         java.util.Date date = new Date(1604678400000L);
         String str = sdf.format(date);
         System.out.println(str);
@@ -97,4 +97,12 @@ public class CaseTest {
         System.out.println(ans.size());
         System.out.println(ans.isEmpty());
     }
+
+    @Test
+    public void test8() {
+
+        int[] ans = {3, 3, 6, 7, 8, 9, 2, 1, 0};
+        Arrays.sort(ans);
+    }
+
 }

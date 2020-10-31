@@ -1,5 +1,6 @@
 package com.study.basicknowledge.basicjava.stream;
 
+import com.study.basicknowledge.basicjava.limit.Teacher;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.junit.Test;
 public class StreamTest {
 
     class Student {
+
         int classId;
         int scores;
 
@@ -100,6 +102,24 @@ public class StreamTest {
 
         System.out.println(studentMap);
 
+    }
+
+    @Test
+    public void test3() {
+        List<Integer> ans = new ArrayList<>();
+        ans.add(1);
+        ans.add(2);
+        ans.add(3);
+
+        String actualResult = ans.stream().filter(item -> item == 0).findFirst().map(String::valueOf)
+            .orElse("1");
+
+        System.out.println(actualResult);
+    }
+
+    @Test
+    public void test4() {
+        Teacher teacher = new Teacher();
     }
 
 }
