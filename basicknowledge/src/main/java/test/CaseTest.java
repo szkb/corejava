@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 import test.ExampleTest.Student;
 
@@ -98,11 +99,46 @@ public class CaseTest {
         System.out.println(ans.isEmpty());
     }
 
+    public int[] intersection(int[] nums1, int[] nums2) {
+        if (nums1  == null || nums2 == null) {
+            return null;
+        }
+        Set<Integer> number1 = new HashSet<>(nums1.length);
+        Set<Integer> number2 = new HashSet<>(nums2.length);
+        for (int item : nums1) {
+            number1.add(item);
+        }
+
+        for (int item : nums2) {
+            number2.add(item);
+        }
+        number1.retainAll(number2);
+        int[] ans = new int[number1.size()];
+        int i = 0;
+        for (Integer item : number1) {
+            ans[i++] = item;
+        }
+        return ans;
+    }
+
     @Test
     public void test8() {
 
         int[] ans = {3, 3, 6, 7, 8, 9, 2, 1, 0};
         Arrays.sort(ans);
+    }
+
+    @Test
+    public void test9() {
+//        List<String> ans = Arrays.asList("hello", "world");
+//        System.out.println(ans.indexOf("world"));
+
+        Pair<String, String> pair = Pair.of("aku", "female");
+        System.out.println(pair.getLeft());
+        System.out.println(pair.getRight());
+
+        System.out.println(pair.getKey());
+        System.out.println(pair.getValue());
     }
 
 }

@@ -120,4 +120,19 @@ public class HashMapTest {
             System.out.println("hello world");
         }
     }
+
+    @Test
+    public void test8() {
+        List<String> numberList = new ArrayList<>();
+        numberList.add(null);
+        numberList.add("world");
+
+        List<String> numberList2 = new ArrayList<>();
+        numberList2.add("hello");
+        numberList2.add(null);
+
+        System.out.println(numberList.retainAll(numberList2));
+        System.out.println(numberList);
+        System.out.println(numberList2);
+    }
 }

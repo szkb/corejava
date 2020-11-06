@@ -37,6 +37,7 @@
         <spring-test.version>5.2.7.RELEASE</spring-test.version>
         <spring-boot-dependencies.version>2.2.5.RELEASE</spring-boot-dependencies.version>
         <mybatis.version>3.5.5</mybatis.version>
+        <kafka-clients.version>0.11.0.0</kafka-clients.version>
     </properties>
 
     <dependencyManagement>
@@ -109,6 +110,12 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka-clients.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
