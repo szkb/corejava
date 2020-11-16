@@ -1,10 +1,14 @@
 package test;
 
+import com.study.basicknowledge.basicjava.stream.reduce.ReduceBenchMark.User;
 import java.io.*;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 import test.ExampleTest.Student;
@@ -14,6 +18,10 @@ import test.ExampleTest.Student;
  * @date 2020/9/30 11:10
  */
 public class CaseTest {
+
+    private BigDecimal number;
+
+    private int math;
 
     public static void main(String[] args) throws IOException {
         // 节点流FileOutputStream直接以A.txt作为数据源操作
@@ -141,4 +149,46 @@ public class CaseTest {
         System.out.println(pair.getValue());
     }
 
+    @Test
+    public void test10() {
+        System.out.println(number);
+        System.out.println(math);
+        System.out.println(Double.NaN+1000);
+    }
+
+    @Test
+    public void test11() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis() + 1000 * 60 * 60 * 6);
+        System.out.println(calendar.get(Calendar.HOUR_OF_DAY));
+    }
+
+    @Test
+    public void test12() {
+        int[] arr1 = new int[1000];
+        int[] arr2 = new int[1000];
+        Map<Integer,Integer> numPostions = IntStream.range(0,arr2.length).boxed().collect(Collectors.toMap(i->arr2[i],i->i));
+        Arrays.stream(arr1).boxed().sorted((o1, o2) -> {
+            int a1 = numPostions.getOrDefault(o1, 1001);
+            int a2 = numPostions.getOrDefault(o2, 1001);
+            if (a1 != 1001 || a2 != 1001) {
+                return a1 - a2;
+            }
+
+            return o1 - o2;
+        }).mapToInt(o->o).toArray();
+    }
+
+    @Test
+    public void test13() {
+        final User user = new User("kobe", 12);
+        user.setAge(15);
+        System.out.println(user);
+    }
+
+    @Test
+    public void test14() {
+        List<User> ans = new ArrayList<>();
+        System.out.println(ans.get(0).getAge());
+    }
 }

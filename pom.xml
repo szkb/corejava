@@ -38,6 +38,14 @@
         <spring-boot-dependencies.version>2.2.5.RELEASE</spring-boot-dependencies.version>
         <mybatis.version>3.5.5</mybatis.version>
         <kafka-clients.version>0.11.0.0</kafka-clients.version>
+        <common.version>0.2.15</common.version>
+        <aggsearch.version>0.1.64</aggsearch.version>
+        <releases.repo>
+            http://maven.release.ctripcorp.com/nexus/content/repositories/flightrelease
+        </releases.repo>
+        <snapshots.repo>
+            http://maven.release.ctripcorp.com/nexus/content/repositories/flightsnapshot
+        </snapshots.repo>
     </properties>
 
     <dependencyManagement>
@@ -117,6 +125,19 @@
                 <artifactId>kafka-clients</artifactId>
                 <version>${kafka-clients.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.ctrip.flight.dom.search.common</groupId>
+                <artifactId>common-base</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ctrip.soa.flight.dom.agg</groupId>
+                <artifactId>flt-agg-search-api</artifactId>
+                <version>${aggsearch.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
