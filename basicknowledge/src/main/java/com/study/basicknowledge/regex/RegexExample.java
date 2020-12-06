@@ -1,6 +1,5 @@
 package com.study.basicknowledge.regex;
 
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.Test;

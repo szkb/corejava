@@ -39,13 +39,7 @@
         <mybatis.version>3.5.5</mybatis.version>
         <kafka-clients.version>0.11.0.0</kafka-clients.version>
         <common.version>0.2.15</common.version>
-        <aggsearch.version>0.1.64</aggsearch.version>
-        <releases.repo>
-            http://maven.release.ctripcorp.com/nexus/content/repositories/flightrelease
-        </releases.repo>
-        <snapshots.repo>
-            http://maven.release.ctripcorp.com/nexus/content/repositories/flightsnapshot
-        </snapshots.repo>
+        <fastutil.version>8.4.3</fastutil.version>
     </properties>
 
     <dependencyManagement>
@@ -136,6 +130,12 @@
                 <groupId>com.ctrip.soa.flight.dom.agg</groupId>
                 <artifactId>flt-agg-search-api</artifactId>
                 <version>${aggsearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>it.unimi.dsi</groupId>
+                <artifactId>fastutil</artifactId>
+                <version>${fastutil.version}</version>
             </dependency>
 
         </dependencies>

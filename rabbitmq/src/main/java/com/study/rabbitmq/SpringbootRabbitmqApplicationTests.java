@@ -1,11 +1,11 @@
 package com.study.rabbitmq;
 
 import java.util.*;
-import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.annotations.Test;
 
 
 public class SpringbootRabbitmqApplicationTests {

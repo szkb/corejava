@@ -181,7 +181,7 @@ public class CaseTest {
 
     @Test
     public void test13() {
-        final User user = new User("kobe", 12);
+        final User user = new User("kobe", 12, null);
         user.setAge(15);
         System.out.println(user);
     }
