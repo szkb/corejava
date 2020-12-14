@@ -108,7 +108,7 @@ public class CaseTest {
     }
 
     public int[] intersection(int[] nums1, int[] nums2) {
-        if (nums1  == null || nums2 == null) {
+        if (nums1 == null || nums2 == null) {
             return null;
         }
         Set<Integer> number1 = new HashSet<>(nums1.length);
@@ -153,7 +153,7 @@ public class CaseTest {
     public void test10() {
         System.out.println(number);
         System.out.println(math);
-        System.out.println(Double.NaN+1000);
+        System.out.println(Double.NaN + 1000);
     }
 
     @Test
@@ -167,7 +167,8 @@ public class CaseTest {
     public void test12() {
         int[] arr1 = new int[1000];
         int[] arr2 = new int[1000];
-        Map<Integer,Integer> numPostions = IntStream.range(0,arr2.length).boxed().collect(Collectors.toMap(i->arr2[i],i->i));
+        Map<Integer, Integer> numPostions = IntStream.range(0, arr2.length).boxed()
+            .collect(Collectors.toMap(i -> arr2[i], i -> i));
         Arrays.stream(arr1).boxed().sorted((o1, o2) -> {
             int a1 = numPostions.getOrDefault(o1, 1001);
             int a2 = numPostions.getOrDefault(o2, 1001);
@@ -176,7 +177,7 @@ public class CaseTest {
             }
 
             return o1 - o2;
-        }).mapToInt(o->o).toArray();
+        }).mapToInt(o -> o).toArray();
     }
 
     @Test
@@ -190,5 +191,17 @@ public class CaseTest {
     public void test14() {
         List<User> ans = new ArrayList<>();
         System.out.println(ans.get(0).getAge());
+    }
+
+    @Test
+    public void test15() {
+        long ans = 1 << 2;
+        System.out.println(ans);
+    }
+
+    @Test
+    public void test16() {
+
+        System.out.println(new ArrayList<>().get(0));
     }
 }

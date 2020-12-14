@@ -265,4 +265,9 @@ public class StudyTest {
         List<Integer> title = Arrays.asList(1, 0, 3);
         title.stream().map(number -> 1 / number).collect(Collectors.toList());
     }
+
+    @Test
+    public void test23() {
+        Optional<User> optionalUser = Optional.empty();
+    }
 }

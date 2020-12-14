@@ -25,6 +25,14 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.influxdb/influxdb-java -->
+        <dependency>
+            <groupId>org.influxdb</groupId>
+            <artifactId>influxdb-java</artifactId>
+            <version>2.11</version>
+        </dependency>
+
     </dependencies>
 
 </project>

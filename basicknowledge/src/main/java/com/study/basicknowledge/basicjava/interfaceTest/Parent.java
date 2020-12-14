@@ -8,4 +8,8 @@ public interface Parent {
 
     void eat();
 
+    default void drink() {
+        System.out.println("dad is drinking");
+    }
+
 }
