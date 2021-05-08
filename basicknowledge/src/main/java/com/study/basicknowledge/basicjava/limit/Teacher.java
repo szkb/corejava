@@ -18,4 +18,13 @@ public class Teacher {
         return "OK";
     }
 
+    private AddressName addressName;
+
+    public AddressName getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(AddressName addressName) {
+        this.addressName = addressName;
+    }
 }

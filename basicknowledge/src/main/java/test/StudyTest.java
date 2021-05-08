@@ -1,5 +1,6 @@
 package test;
 
+import com.study.basicknowledge.basicjava.limit.Teacher;
 import com.study.basicknowledge.basicjava.stream.reduce.ReduceBenchMark.User;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -9,6 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.*;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -39,7 +42,7 @@ public class StudyTest {
     }
 
     @Test
-    public void test() {
+    public void test0() {
         System.out.println(Math.floor(0.3333));
         System.out.println(Math.pow(2.5, 3));
     }
@@ -268,6 +271,20 @@ public class StudyTest {
 
     @Test
     public void test23() {
-        Optional<User> optionalUser = Optional.empty();
+        List<String> ans = new ArrayList<>();
+        if (CollectionUtils.isEmpty(ans)) {
+            System.out.println("hello");
+        }
+
+        ans.add(null);
+        if (CollectionUtils.isEmpty(ans)) {
+            System.out.println("world");
+        }
+    }
+
+    @Test
+    public void test24() {
+        boolean ans = StringUtils.equalsIgnoreCase(null, "hello");
+        System.out.println(ans);
     }
 }

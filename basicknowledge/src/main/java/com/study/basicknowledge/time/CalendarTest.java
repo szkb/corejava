@@ -15,4 +15,18 @@ public class CalendarTest {
         calendar.setTimeInMillis(System.currentTimeMillis());
         System.out.println(calendar.getTime());
     }
+
+    @Test
+    public void test2() {
+        Calendar departDate = Calendar.getInstance();
+        long leaveDate = System.currentTimeMillis() + 24 * 60 * 60 * 1000;
+        departDate.setTimeInMillis(leaveDate);
+
+        Calendar date = Calendar.getInstance();
+        long mill = System.currentTimeMillis() + 24 * 60 * 60;
+        date.setTimeInMillis(mill);
+
+        System.out.println(departDate.after(date));
+
+    }
 }

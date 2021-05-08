@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class StreamTest {
 
-    class Student {
+    static class Student {
 
         int classId;
         int scores;

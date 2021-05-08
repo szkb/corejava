@@ -4,9 +4,11 @@ import java.io.*;
 import java.net.Socket;
 
 public class ChatClient {
+
     private BufferedReader reader;
     private BufferedWriter writer;
     private Socket socket;
+
     //发送消息给服务器
     public void sendToServer(String msg) throws IOException {
         //发送之前，判断socket的输出流是否关闭
@@ -16,6 +18,7 @@ public class ChatClient {
             writer.flush();
         }
     }
+
     //从服务器接收消息
     public String receive() throws IOException {
         String msg = null;
@@ -31,11 +34,11 @@ public class ChatClient {
         //和服务创建连接
         try {
             socket = new Socket("127.0.0.1", 8888);
-            reader=new BufferedReader(
-                    new InputStreamReader(socket.getInputStream())
+            reader = new BufferedReader(
+                new InputStreamReader(socket.getInputStream())
             );
-            writer=new BufferedWriter(
-                    new OutputStreamWriter(socket.getOutputStream())
+            writer = new BufferedWriter(
+                new OutputStreamWriter(socket.getOutputStream())
             );
             //新建一个线程去监听用户输入的消息
             new Thread(new UserInputHandler(this)).start();
@@ -46,17 +49,17 @@ public class ChatClient {
              * 因为receive()获取时，在返回之前是阻塞的，一旦接收到消息才会返回，也就是while这里是阻塞的，一旦有消息就会进入到while里面
              * 这时候如果输出的是receive(),那么上次获取的信息就会丢失，然后阻塞在System.out.println
              * */
-            String msg=null;
-            while ((msg=receive())!=null){
+            String msg = null;
+            while ((msg = receive()) != null) {
                 System.out.println(msg);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-               if(writer!=null){
-                   writer.close();
-               }
+                if (writer != null) {
+                    writer.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

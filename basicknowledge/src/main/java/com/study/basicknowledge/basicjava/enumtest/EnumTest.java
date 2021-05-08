@@ -1,8 +1,12 @@
 package com.study.basicknowledge.basicjava.enumtest;
 
-import java.util.Collections;
-import java.util.List;
+import static com.study.basicknowledge.basicjava.enumtest.MemberLevelEntity.*;
+
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import java.math.BigDecimal;
+import java.util.*;
 import org.junit.Test;
+import org.w3c.dom.ls.LSOutput;
 import test.BookingChannelEnum;
 
 /**
@@ -30,11 +34,41 @@ public class EnumTest {
         System.out.println(title);
     }
 
+//    @Test
+//    public void test3() {
+//        BookingChannelEnum bookingChannelEnum = BookingChannelEnum.valueOf("NO_NEED_PnR");
+//        System.out.println(bookingChannelEnum);
+//        System.out.println(bookingChannelEnum.getValue());
+//    }
+
     @Test
-    public void test3() {
-        BookingChannelEnum bookingChannelEnum = BookingChannelEnum.valueOf("NO_NEED_PnR");
-        System.out.println(bookingChannelEnum);
-        System.out.println(bookingChannelEnum.getValue());
+    public void test4() {
+        String memberLevel = "Gold";
+        final String a = "hello";
+        System.out.println("Gold".hashCode());
+        System.out.println("Platina".hashCode());
+        System.out.println("Diamond".hashCode());
+        System.out.println(Gold.name().hashCode());
+        switch (memberLevel) {
+            case "Gold.name()":
+                System.out.println("hello");
+                break;
+            case "Platina":
+                System.out.println("world");
+                break;
+            case "Diamond":
+                System.out.println("hello world");
+                break;
+            default:
+                System.out.println("are you ok");
+        }
+    }
+
+    @Test
+    public void test5() {
+        Map<String, String> map = new HashMap<>();
+        map.put("hello", "1");
+        System.out.println(map.get("hello"));
     }
 
 }

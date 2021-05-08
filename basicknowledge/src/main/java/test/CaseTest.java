@@ -201,7 +201,6 @@ public class CaseTest {
 
     @Test
     public void test16() {
-
         System.out.println(new ArrayList<>().get(0));
     }
 }

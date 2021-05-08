@@ -3,18 +3,21 @@ package com.study.dubbo.aio;
 import java.io.*;
 
 public class UserInputHandler implements Runnable {
+
     ChatClient client;
+
     public UserInputHandler(ChatClient chatClient) {
-        this.client=chatClient;
+        this.client = chatClient;
     }
+
     @Override
     public void run() {
-        BufferedReader read=new BufferedReader(
-                new InputStreamReader(System.in)
+        BufferedReader read = new BufferedReader(
+            new InputStreamReader(System.in)
         );
-        while (true){
+        while (true) {
             try {
-                String input=read.readLine();
+                String input = read.readLine();
                 client.send(input);
                 if (input.equals("quit")) {
                     break;
