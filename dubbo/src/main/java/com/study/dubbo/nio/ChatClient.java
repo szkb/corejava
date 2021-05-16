@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.util.Set;
 
 public class ChatClient {
+
     private static final int BUFFER = 1024;
     private ByteBuffer read_buffer = ByteBuffer.allocate(BUFFER);
     private ByteBuffer write_buffer = ByteBuffer.allocate(BUFFER);
@@ -18,9 +19,9 @@ public class ChatClient {
     private Charset charset = Charset.forName("UTF-8");
 
     private void start() {
-        try  {
-            client=SocketChannel.open();
-            selector=Selector.open();
+        try {
+            client = SocketChannel.open();
+            selector = Selector.open();
             client.configureBlocking(false);
             //注册channel，并监听SocketChannel的Connect事件
             client.register(selector, SelectionKey.OP_CONNECT);
@@ -37,7 +38,7 @@ public class ChatClient {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }catch (ClosedSelectorException e){
+        } catch (ClosedSelectorException e) {
             //当用户输入quit时，在send()方法中，selector会被关闭，而在上面的无限while循环中，可能会使用到已经关闭了的selector。
             //所以这里捕捉一下异常，做正常退出处理就行了。不会对服务器造成影响
         }
@@ -48,15 +49,15 @@ public class ChatClient {
         if (key.isConnectable()) {
             SocketChannel client = (SocketChannel) key.channel();
             //finishConnect()返回true，说明和服务器已经建立连接。如果是false，说明还在连接中，还没完全连接完成
-            if(client.finishConnect()){
+            if (client.finishConnect()) {
                 //新建一个新线程去等待用户输入
                 new Thread(new UserInputHandler(this)).start();
             }
             //连接建立完成后，注册read事件，开始监听服务器转发的消息
-            client.register(selector,SelectionKey.OP_READ);
+            client.register(selector, SelectionKey.OP_READ);
         }
         //当触发read事件，也就是获取到服务器的转发消息
-        if(key.isReadable()){
+        if (key.isReadable()) {
             SocketChannel client = (SocketChannel) key.channel();
             //获取消息
             String msg = receive(client);
@@ -70,8 +71,9 @@ public class ChatClient {
             }
         }
     }
+
     //获取消息
-    private String receive(SocketChannel client) throws IOException{
+    private String receive(SocketChannel client) throws IOException {
         read_buffer.clear();
         while (client.read(read_buffer) > 0) {
             ;
@@ -81,15 +83,15 @@ public class ChatClient {
     }
 
     //发送消息
-    public void send(String msg) throws IOException{
-        if(!msg.isEmpty()){
+    public void send(String msg) throws IOException {
+        if (!msg.isEmpty()) {
             write_buffer.clear();
             write_buffer.put(charset.encode(msg));
             write_buffer.flip();
-            while (write_buffer.hasRemaining()){
+            while (write_buffer.hasRemaining()) {
                 client.write(write_buffer);
             }
-            if(msg.equals("quit")){
+            if (msg.equals("quit")) {
                 selector.close();
             }
         }

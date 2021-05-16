@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.util.Set;
 
 public class ChatServer {
+
     //设置缓冲区的大小，这里设置为1024个字节
     private static final int BUFFER = 1024;
 
@@ -35,10 +36,9 @@ public class ChatServer {
             server.register(selector, SelectionKey.OP_ACCEPT);
             System.out.println("启动服务器，监听端口:" + port);
 
-
             while (true) {
                 //select()会返回此时触发了多少个Selector监听的事件
-                if(selector.select()>0) {
+                if (selector.select() > 0) {
                     //获取这些已经触发的事件,selectedKeys()返回的是触发事件的所有信息
                     Set<SelectionKey> selectionKeys = selector.selectedKeys();
                     //循环处理这些事件
