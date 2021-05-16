@@ -65,4 +65,29 @@ public class Example {
         Calendar calendar = Calendar.getInstance();
         System.out.println(calendar);
     }
+
+    private double getPoints(double x, double y, double z) {
+        return z * (0.7 * Math.pow(x - 5, 2) + (x - 5) * (y - 3.2) + 2 * Math.pow(y - 3.2, 2) + Math
+            .abs(20 * (x - 3.7)) + Math.abs(40 * (y - 3.5)));
+    }
+
+    @Test
+    public void test6() {
+        System.out.println(getPoints(-1.0 * 1.0,4.0 * 1.0,0.1 * 1.0));
+    }
+
+    @Test
+    public void test7() {
+        List<BigDecimal> numbers = new ArrayList<>();
+        numbers.add(new BigDecimal(20));
+        numbers.add(new BigDecimal("3.7"));
+        numbers.add(new BigDecimal(10));
+        numbers.sort((x, y) -> x.subtract(y).intValue());
+        System.out.println(numbers);
+
+        BigDecimal a = new BigDecimal(2);
+        BigDecimal b = new BigDecimal(3);
+        BigDecimal c = new BigDecimal(5);
+        System.out.println(a.add(b).multiply(c).subtract(BigDecimal.ONE));
+    }
 }

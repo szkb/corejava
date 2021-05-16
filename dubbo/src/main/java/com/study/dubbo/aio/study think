@@ -1,0 +1,2 @@
+1、服务端绑定服务器，accept陷入阻塞，客户端上限便会执行回调方法AcceptHandler.completed方法；
+2、客户端循环执行readLine在channel写消息，已有消息便会执行ClientHandle方法。
