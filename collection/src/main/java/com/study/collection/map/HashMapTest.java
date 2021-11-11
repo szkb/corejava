@@ -13,6 +13,25 @@ import org.junit.Test;
  */
 public class HashMapTest {
 
+    class User {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
+    }
+
     @Test
     public void test() {
         HashMap<String, Integer> map = new HashMap<>();
@@ -124,7 +143,7 @@ public class HashMapTest {
     @Test
     public void test8() {
         List<String> numberList = new ArrayList<>();
-        numberList.add(null);
+        numberList.add("hello");
         numberList.add("world");
 
         List<String> numberList2 = new ArrayList<>();
@@ -134,5 +153,71 @@ public class HashMapTest {
         System.out.println(numberList.retainAll(numberList2));
         System.out.println(numberList);
         System.out.println(numberList2);
+    }
+
+    @Test
+    public void test9() {
+       Set<Integer> ans = new HashSet<>();
+       ans.add(2);
+       ans.add(1);
+       System.out.println(ans);
+    }
+
+    @Test
+    public void test10() {
+        boolean a = false;
+        boolean b = false;
+        System.out.println(a ^ b);
+
+        a = true;
+        b = true;
+        System.out.println(a ^ b);
+
+        a = false;
+        b = true;
+        System.out.println(a ^ b);
+    }
+
+    @Test
+    public void test11() {
+        List<String> ans = new ArrayList<>();
+        ans.add("hello");
+        ans.add("world");
+
+        List<String> number = new ArrayList<>();
+        number.add("1");
+        number.add("2");
+
+        number.addAll(ans);
+        System.out.println(number);
+
+        number.addAll(0, ans);
+        System.out.println(number);
+    }
+
+    @Test
+    public void test12() {
+        List<String> ans = new ArrayList<>();
+        ans.add("hello");
+        System.out.println(ans);
+
+        ans.add("你好");
+        System.out.println(ans);
+    }
+
+    @Test
+    public void test13() {
+        List<User> users = new ArrayList<>();
+        User user = new User();
+        user.setName("123");
+        users.add(user);
+
+        List<User> ans = new ArrayList<>(users);
+        System.out.println(ans);
+        System.out.println(users);
+
+        users.get(0).setName("hello");
+        System.out.println(ans);
+        System.out.println(users);
     }
 }

@@ -1,6 +1,7 @@
 package com.study.collection.map;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import org.junit.Test;
 
 /**
@@ -14,12 +15,17 @@ public class LinkedHashMapTest {
      */
     @Test
     public void test() {
-        LinkedHashMap<String, String> linkedMap = new LinkedHashMap<>();
+        LinkedHashMap<String, String> linkedMap = new LinkedHashMap<>(2);
         linkedMap.put("2", "2");
         linkedMap.put("1", "1");
         linkedMap.put("3", "3");
 
+        linkedMap.put("2", "3");
+
         System.out.println(linkedMap);
+        for (Map.Entry<String, String> map : linkedMap.entrySet()) {
+            System.out.println(map);
+        }
     }
 
     @Test

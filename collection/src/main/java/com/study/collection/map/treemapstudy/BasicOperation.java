@@ -16,6 +16,7 @@ public class BasicOperation {
         treeMap.put("1", "1");
         treeMap.put("3", "3");
 
+        System.out.println(treeMap);
         System.out.println(treeMap.get("1"));
     }
 
