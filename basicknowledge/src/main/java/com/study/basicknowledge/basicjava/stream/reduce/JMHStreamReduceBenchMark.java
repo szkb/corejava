@@ -26,7 +26,7 @@ public class JMHStreamReduceBenchMark {
             // 预热5轮
             .warmupIterations(15)
             // 度量10轮
-            .measurementIterations(50)
+            .measurementIterations(5)
             .forks(1).shouldFailOnError(true).shouldDoGC(true)
             .jvmArgs("-server").build();
         new Runner(options).run();

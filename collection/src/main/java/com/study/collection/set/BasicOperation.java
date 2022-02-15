@@ -1,6 +1,7 @@
 package com.study.collection.set;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import org.junit.Test;
 
 /**
@@ -42,5 +43,15 @@ public class BasicOperation {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+    }
+
+    @Test
+    public void test4() {
+        List<String> ans = new ArrayList<>();
+        ans.add("2");
+        ans.add("1");
+
+        Set<String> set = ans.stream().collect(Collectors.toSet());
+        System.out.println(set.contains(null));
     }
 }

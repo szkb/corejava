@@ -34,7 +34,7 @@ public class MyClassLoader extends ClassLoader {
 
     private File getClassFile(String name) {
         File file = new File("D:\\Users\\testJavaProject\\core\\basicknowledge\\target\\classes\\com\\study"
-            + "\\basicknowledge\\classloader\\com\\example\\Sample.class");
+            + "\\basicknowledge\\basicjava\\classloader\\com\\example\\Sample.class");
         return file;
     }
 
