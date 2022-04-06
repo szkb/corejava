@@ -1,6 +1,6 @@
 package com.study.springboot;
 
-import com.study.springboot.annotationdemo.Parent;
+import com.study.springboot.ioc.constructor.JapaneseMock;
 import com.study.springboot.transaction.PersonService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,15 @@ class SpringbootApplicationTests {
     PersonService personService;
 
     @Test
-    public void testTransaction() {
-        personService.testName();
+    public void testTransaction() throws InterruptedException {
+        new Thread(){
+
+            for (int i = 0; i < 100; i++) {
+                personService.testName();
+                JapaneseMock.useAxe();
+                System.out.println("******************");
+            }
+        }.start();
+
     }
 }

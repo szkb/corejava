@@ -20,7 +20,7 @@ public class PersonService {
     }
 
     public void testName() {
-        System.out.println(name);
+        System.out.println("world");
     }
 
     private void errorUpdatePerson(String name) {

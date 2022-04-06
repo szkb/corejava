@@ -19,7 +19,7 @@ public class UserInputHandler implements Runnable {
             try {
                 String input = read.readLine();
                 client.send(input);
-                if (input.equals("quit")) {
+                if ("quit".equals(input)) {
                     break;
                 }
             } catch (IOException e) {

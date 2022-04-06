@@ -1,5 +1,9 @@
 package com.study.basicknowledge.basicjava.gc;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import org.junit.Test;
+
 /**
  * GCRoots 测试：虚拟机栈（栈帧中的局部变量）中引用的对象作为GCRoots -Xms1024m -Xmx1024m -Xmn512m -XX:+PrintGCDetails
  * <p>
@@ -24,4 +28,15 @@ public class TestGCRoots01 {
         System.gc();
         System.out.println("第一次GC完成");
     }
+
+    @Test
+    public void test() {
+        BigDecimal a = new BigDecimal(168);
+        BigDecimal b = new BigDecimal(132.0522);
+        BigDecimal rate = (new BigDecimal(50).divide(new BigDecimal(100), 2, RoundingMode.HALF_UP)
+        );
+        BigDecimal ans = a.subtract(b).multiply(rate).add(b);
+        System.out.println(ans);
+    }
+
 }

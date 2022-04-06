@@ -3,6 +3,7 @@ package com.study.concurrence.listenablefuture;
 import static com.study.concurrence.listenablefuture.Common.process;
 
 import com.google.common.util.concurrent.*;
+import com.google.common.util.concurrent.Futures.FutureCombiner;
 import java.util.*;
 import java.util.concurrent.*;
 import org.apache.commons.collections4.IterableUtils;
@@ -20,7 +21,7 @@ public class ListenableFutureTest {
         ExecutorService executorService = Executors.newCachedThreadPool();
         long time = System.currentTimeMillis();
         ListenableFuture<List<SearchContext>> future =
-            Futures.successfulAsList(Common.getAge(searchContext), Common.getName(searchContext));
+            Futures.allAsList(Common.getAge(searchContext), Common.getName(searchContext));
         long time1 = System.currentTimeMillis();
 //        System.out.println(time1 - time);
 //        System.out.println(future.get());
@@ -39,6 +40,7 @@ public class ListenableFutureTest {
         }, MoreExecutors.directExecutor());
         long time3 = System.currentTimeMillis();
         System.out.println(time3 - time2);
+        System.out.println(ans.get().get(0).get());
         System.out.println(ans.get().get(1).get());
         long time4 = System.currentTimeMillis();
         System.out.println(time4 - time3);
@@ -52,7 +54,54 @@ public class ListenableFutureTest {
     @Test
     public void test3() throws InterruptedException {
         SearchContext searchContext = new SearchContext();
+        long time = System.currentTimeMillis();
         ListenableFuture<List<SearchContext>> future =
             Futures.successfulAsList(Common.getAge(searchContext), Common.getName(searchContext));
+        long time2 = System.currentTimeMillis();
+        System.out.println(time2 - time);
+    }
+
+    @Test
+    public void test4() throws InterruptedException, ExecutionException {
+        SearchContext searchContext = new SearchContext();
+
+        ListenableFuture<SearchContext> future = Common.getAge(searchContext);
+        Future<SearchContext> future1 = Futures.lazyTransform(future, context -> {
+            context.setAge("100");
+            return context;
+        });
+
+        System.out.println(future.get().getAge());
+//        System.out.println(future1.get().getAge());
+        System.out.println(future1.isDone());
+    }
+
+    @Test
+    public void test5() throws InterruptedException, ExecutionException {
+        // https://www.1ju.org/article/guava-futures-listenablefuture
+        SearchContext searchContext = new SearchContext();
+        long time = System.currentTimeMillis();
+        FutureCombiner<SearchContext> future =
+            Futures.whenAllSucceed(Common.getAge(searchContext), Common.getName(searchContext));
+        long time2 = System.currentTimeMillis();
+        System.out.println(time2 - time);
+        System.out.println(future.call(() -> future).get());
+    }
+
+    @Test
+    public void test6() throws InterruptedException, ExecutionException {
+        SearchContext searchContext = new SearchContext();
+
+        ListenableFuture<SearchContext> future = Common.getAge(searchContext);
+        Future<SearchContext> future1 = Futures.immediateCancelledFuture();
+        System.out.println(future.get());
+        System.out.println(future1.get());
+    }
+
+    @Test
+    public void test7() {
+        Map<String, String> ans = new HashMap<>();
+        ans.put("hello", "world");
+        System.out.println(ans.getOrDefault("111", null));
     }
 }
