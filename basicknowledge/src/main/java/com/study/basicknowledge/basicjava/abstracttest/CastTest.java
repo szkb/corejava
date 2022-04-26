@@ -1,8 +1,11 @@
 package com.study.basicknowledge.basicjava.abstracttest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
@@ -79,5 +82,15 @@ public class CastTest {
         Set<String> ans = new HashSet<>();
         ans.add("hello");
         System.out.println(ans.contains(null));
+    }
+
+    @Test
+    public void test7() {
+        List<String> ans = new ArrayList<>();
+        ans.add("2");
+        ans.add("3");
+        ans.add("2");
+        List<String> result = ans.stream().filter(item -> "2".equals(item)).collect(Collectors.toList());
+        System.out.println(result);
     }
 }

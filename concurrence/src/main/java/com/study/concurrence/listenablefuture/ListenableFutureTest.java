@@ -16,7 +16,7 @@ import org.junit.Test;
 public class ListenableFutureTest {
 
     @Test
-    public void test() throws InterruptedException, ExecutionException {
+    public void test() throws Exception {
         SearchContext searchContext = new SearchContext();
         ExecutorService executorService = Executors.newCachedThreadPool();
         long time = System.currentTimeMillis();
@@ -52,7 +52,7 @@ public class ListenableFutureTest {
     }
 
     @Test
-    public void test3() throws InterruptedException {
+    public void test3() throws Exception {
         SearchContext searchContext = new SearchContext();
         long time = System.currentTimeMillis();
         ListenableFuture<List<SearchContext>> future =
@@ -62,7 +62,7 @@ public class ListenableFutureTest {
     }
 
     @Test
-    public void test4() throws InterruptedException, ExecutionException {
+    public void test4() throws Exception {
         SearchContext searchContext = new SearchContext();
 
         ListenableFuture<SearchContext> future = Common.getAge(searchContext);
@@ -77,7 +77,7 @@ public class ListenableFutureTest {
     }
 
     @Test
-    public void test5() throws InterruptedException, ExecutionException {
+    public void test5() throws Exception {
         // https://www.1ju.org/article/guava-futures-listenablefuture
         SearchContext searchContext = new SearchContext();
         long time = System.currentTimeMillis();
@@ -89,7 +89,7 @@ public class ListenableFutureTest {
     }
 
     @Test
-    public void test6() throws InterruptedException, ExecutionException {
+    public void test6() throws Exception {
         SearchContext searchContext = new SearchContext();
 
         ListenableFuture<SearchContext> future = Common.getAge(searchContext);
@@ -103,5 +103,28 @@ public class ListenableFutureTest {
         Map<String, String> ans = new HashMap<>();
         ans.put("hello", "world");
         System.out.println(ans.getOrDefault("111", null));
+    }
+
+    @Test
+    public void test8() throws Exception {
+        SearchContext searchContext = new SearchContext();
+
+        long time = System.currentTimeMillis();
+        ListenableFuture<SearchContext> future = Common.getAge(searchContext);
+        System.out.println(System.currentTimeMillis() - time);
+//        CallBack callBack = new CallBack() {
+//            @Override
+//            public void execute(SearchContext searchContext1) {
+//                searchContext1.setAge("120");
+//            }
+//        };
+//        ListenableFuture<SearchContext> future = Common.getAsyncAge(callBack);
+        ListenableFuture<SearchContext> future1 = Common.getName(searchContext);
+        Futures.transformAsync(future1, item -> {
+            System.out.println(future.get());
+            long time1 = System.currentTimeMillis();
+            System.out.println(time1 - time);
+            return null;
+        });
     }
 }

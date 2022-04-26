@@ -287,4 +287,11 @@ public class StudyTest {
         boolean ans = StringUtils.equalsIgnoreCase(null, "hello");
         System.out.println(ans);
     }
+
+    @Test
+    public void test25() {
+        String ans = "Bnc";
+        System.out.println(ans.toLowerCase());
+    }
+
 }
