@@ -71,7 +71,7 @@ public class ChatServer {
         //当触发了Read事件，也就是客户端发来了消息
         if (key.isReadable()) {
             SocketChannel client = (SocketChannel) key.channel();
-            //获取消息
+            //获取消息key = {SelectionKeyImpl@969}
             String msg = receive(client);
             System.out.println("客户端[" + client.socket().getPort() + "]:" + msg);
             //把消息转发给其他客户端

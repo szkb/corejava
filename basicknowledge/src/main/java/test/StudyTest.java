@@ -294,4 +294,11 @@ public class StudyTest {
         System.out.println(ans.toLowerCase());
     }
 
+    @Test
+    public void test26() {
+        String ans = "Bnc";
+        Map<String, String> finalAns = new HashMap<>();
+        finalAns.put(ans, null);
+        System.out.println(finalAns);
+    }
 }
