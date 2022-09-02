@@ -92,4 +92,18 @@ public class StudyTest2 {
         String price = map.compute("Shoes", (key, value) -> key + value);
         System.out.println(price);
     }
+
+    @Test
+    public void test7() {
+        List<List<String>> ans = new ArrayList<>();
+        List<String> temp = new ArrayList<>();
+        temp.add("hello");
+        ans.add(temp);
+        System.out.println(ans);
+        ans.forEach(item -> item.removeIf(j -> j.equals("hello")));
+        System.out.println(ans);
+
+        System.out.println(temp.isEmpty());
+        System.out.println(ans.isEmpty());
+    }
 }
