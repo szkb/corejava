@@ -1,6 +1,5 @@
 package com.study.basicknowledge.basicjava.stream.reduce;
 
-import com.google.common.util.concurrent.AsyncFunction;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -9,6 +8,7 @@ import com.google.common.util.concurrent.MoreExecutors;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
+import lombok.Data;
 import org.junit.Test;
 
 /**
@@ -95,5 +95,43 @@ public class ReduceTest {
         });
 
         System.out.println(allFutures.get());
+    }
+
+    @Test
+    public void test6() {
+        List<String> list = Arrays.asList("node", "java", "react", "react", "javascript");
+
+        String result = list.stream()
+            .filter("react"::equalsIgnoreCase)
+            .reduce((first, second) -> second).orElse("no last element");
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void test7() {
+        List<User> list = new ArrayList<>();
+
+        User user = new User();
+        user.setAge(11);
+        user.setName("hello");
+
+        User user1 = new User();
+        user1.setAge(11);
+        user1.setName("world");
+
+        list.add(user);
+        list.add(user1);
+
+        User result = list.stream()
+            .filter(item -> item.getAge() == 11)
+            .reduce((first, second) -> second).orElse(null);
+        System.out.println(result.getName());
+    }
+
+    @Data
+    private static class User {
+        private String name;
+        private int age;
     }
 }
