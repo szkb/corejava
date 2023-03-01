@@ -1,8 +1,10 @@
 package test;
 
+import com.study.basicknowledge.basicjava.interfaceTest.defaulttest.B;
 import com.study.basicknowledge.basicjava.stream.reduce.ReduceBenchMark.User;
 import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -203,4 +205,11 @@ public class CaseTest {
     public void test16() {
         System.out.println(new ArrayList<>().get(0));
     }
+
+    @Test
+    public void test17() {
+        BigDecimal a = new BigDecimal("3");
+        System.out.println(a.multiply(new BigDecimal(21)).setScale(0, RoundingMode.HALF_UP));
+    }
+
 }

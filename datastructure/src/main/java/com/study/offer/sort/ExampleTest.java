@@ -1,5 +1,10 @@
 package com.study.offer.sort;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.junit.Test;
 
 /**
@@ -21,6 +26,17 @@ public class ExampleTest {
     @Test
     public void test() {
         System.out.println(minRunLength(64));
+    }
+
+    @Test
+    public void test2() {
+        List<Integer> ans = new ArrayList<>();
+        ans.add(3);
+        ans.add(3);
+        ans.add(4);
+        System.out.println(ans.size());
+
+        System.out.println(ans.stream().collect(Collectors.toSet()).size());
     }
 
 }
