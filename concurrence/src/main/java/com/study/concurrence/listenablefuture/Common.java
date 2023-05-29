@@ -58,8 +58,8 @@ public class Common {
 
     public static ListenableFuture<SearchContext> process(SearchContext searchContext) throws InterruptedException {
 //        System.out.println(Thread.currentThread().getName());
-        Thread.sleep(5000);
-        return Futures.immediateFuture(searchContext);
+//        Thread.sleep(5000);
+        return Futures.immediateFuture(null);
     }
 
     public static ListenableFuture<SearchContext> getAsyncAge(CallBack callBack) throws InterruptedException {

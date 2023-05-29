@@ -66,6 +66,7 @@ public class BasicOperation {
     public void test4() {
         String a = "hello";
         int hashCode = a.hashCode();
+        System.out.println(hashCode);
     }
 
 }

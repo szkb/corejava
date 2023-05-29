@@ -106,4 +106,11 @@ public class StudyTest2 {
         System.out.println(temp.isEmpty());
         System.out.println(ans.isEmpty());
     }
+
+    @Test
+    public void test8() {
+        int a = 1;
+        System.out.println(Long.valueOf(a));
+        System.out.println(String.valueOf(null));
+    }
 }

@@ -21,7 +21,7 @@ public class Room {
     private double price;
 
     @JsonProperty("roomSize")
-    private int size;
+    private Long size;
 
     private String address;
 

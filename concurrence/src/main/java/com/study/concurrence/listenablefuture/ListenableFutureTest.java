@@ -2,10 +2,18 @@ package com.study.concurrence.listenablefuture;
 
 import static com.study.concurrence.listenablefuture.Common.process;
 
-import com.google.common.util.concurrent.*;
+import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.Futures.FutureCombiner;
-import java.util.*;
-import java.util.concurrent.*;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.MoreExecutors;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import org.apache.commons.collections4.IterableUtils;
 import org.junit.Test;
 

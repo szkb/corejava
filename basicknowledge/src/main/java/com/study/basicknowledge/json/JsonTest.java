@@ -30,14 +30,14 @@ public class JsonTest {
     public void test() throws IOException {
         Room room = new Room();
         room.setPrice(100);
-        room.setSize(100);
+        room.setSize(100L);
         room.setAddress("hello world");
         room.setBeautiful(true);
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = new ObjectMapper().writeValueAsString(room);
         System.out.println(jsonString);
-        Room temp = mapper.readValue(jsonString, Room.class);
+        Room2 temp = mapper.readValue(jsonString, Room2.class);
         System.out.println(temp);
     }
 
